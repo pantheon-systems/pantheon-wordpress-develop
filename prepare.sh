@@ -7,6 +7,8 @@
 ###
 terminus auth login --machine-token=$TERMINUS_TOKEN
 
+set -ex
+
 ###
 # Create a new environment for this particular test run.
 ###

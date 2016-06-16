@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 ###
 # Delete the environment used for this test run.
 ###
