@@ -42,6 +42,8 @@ cp templates/composer.json wordpress-develop/composer.json
 cd wordpress-develop
 composer install
 git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git config --global user.email "wordpress-develop@getpantheon.com"
+git config --global user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
 git push upstream master:$PANTHEON_BRANCH
 cd ../
