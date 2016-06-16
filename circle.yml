@@ -1,0 +1,20 @@
+machine:
+  php:
+    # https://circleci.com/docs/environment#php
+    version: 5.5.11
+  environment:
+    # DB config. Using default CircleCI's database.
+    PANTHEON_BRANCH: ci-$CIRCLE_BUILD_NUM
+    PANTHEON_SITE: wordpress-develop
+
+dependencies:
+  cache_directories:
+    - ~/.composer/cache
+
+test:
+  pre:
+    - ./prepare.sh
+  override:
+    - ./test.sh
+  post:
+    - ./cleanup.sh
