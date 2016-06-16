@@ -26,3 +26,27 @@ git clone git://develop.git.wordpress.org/ wordpress-develop
 cd wordpress-develop
 git remote add upstream $PANTHEON_GIT_URL
 git push -f upstream master:$PANTHEON_BRANCH
+cd ../
+
+###
+# Copy necessary accessory files to the environment
+###
+cp templates/wp-tests-config.php wordpress-develop/wp-tests-config.php
+cp templates/test-runner.php wordpress-develop/test-runner.php
+cp templates/wp-cli.local.yml wordpress-develop/wp-cli.local.yml
+cp templates/composer.json wordpress-develop/composer.json
+
+###
+# Commit the necessary files to the environment
+###
+cd wordpress-develop
+composer install
+git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git commit -m "Include requisite test runner dependencies"
+git push upstream master:$PANTHEON_BRANCH
+cd ../
+
+###
+# Switch environment to SFTP mode for running tests
+###
+terminus site set-connection-mode --site=$PANTHEON_SITE --env=$PANTHEON_BRANCH --mode=sftp

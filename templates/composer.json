@@ -1,0 +1,12 @@
+{
+    "name": "danielbachhuber/pantheon-wordpress-develop",
+    "require": {
+        "phpunit/phpunit": "~4.8"
+    },
+    "authors": [
+        {
+            "name": "Daniel Bachhuber",
+            "email": "daniel@handbuilt.co"
+        }
+    ]
+}

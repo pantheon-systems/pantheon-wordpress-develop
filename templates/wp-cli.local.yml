@@ -1,0 +1,3 @@
+path: src/
+require:
+  - test-runner.php
