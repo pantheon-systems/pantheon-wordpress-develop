@@ -1,7 +1,5 @@
 #!/bin/bash
 
-alias terminus=./vendor/bin/terminus
-
 ###
 # Authenticate with Terminus to perform site management operations.
 #
