@@ -10,8 +10,8 @@ machine:
 dependencies:
   cache_directories:
     - ~/.composer/cache
-  post:
-    - export PATH=$(pwd)/vendor/bin:$PATH
+  override:
+    - composer global require pantheon-systems/terminus
 
 test:
   pre:
