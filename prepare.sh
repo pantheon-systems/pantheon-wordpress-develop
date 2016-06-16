@@ -24,8 +24,8 @@ PANTHEON_GIT_URL=$(terminus site connection-info --field=git_url --site=$PANTHEO
 ###
 git clone git://develop.git.wordpress.org/ wordpress-develop
 cd wordpress-develop
-git remote add upstream $PANTHEON_GIT_URL
-git push -f upstream master:$PANTHEON_BRANCH
+git remote add pantheonsite $PANTHEON_GIT_URL
+git push -f pantheonsite master:$PANTHEON_BRANCH
 cd ../
 
 ###
@@ -45,7 +45,7 @@ git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
 git config --global user.email "wordpress-develop@getpantheon.com"
 git config --global user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
-git push upstream master:$PANTHEON_BRANCH
+git push pantheonsite master:$PANTHEON_BRANCH
 cd ../
 
 ###
