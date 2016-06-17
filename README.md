@@ -33,7 +33,11 @@ And that's it!
 
 Need to improve this test runner in some way? You can clone the repository locally and run it against any Pantheon site.
 
-**WARNING! WARNING! THIS TEST RUNNER IRREVOCABLY DAMAGES YOUR PANTHEON SITE. USE ONLY WITH A SINGLE-USE, "THROWAWAY" SITE. DO NOT USE WITH ANY PANTHEON SITE THAT CANNOT BE DELETED.** 
+**WARNING! WARNING!**
+
+**PLEASE READ THE FOLLOWING VERY CAREFULLY.**
+
+**BY FORCE PUSHING AGAINST `PANTHEON_BRANCH` AND ERASING THE DATABASE, THIS TEST RUNNER IRREVOCABLY DAMAGES YOUR PANTHEON SITE. USE ONLY WITH A SINGLE-USE, "THROWAWAY" SITE. DO NOT USE WITH ANY PANTHEON SITE THAT CANNOT BE DELETED.** 
 
 With the warning out of the way and Terminus already installed on your machine, here's how you can use the test runner locally:
 
