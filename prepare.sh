@@ -29,7 +29,7 @@ git push -f pantheonsite master:$PANTHEON_BRANCH
 cd ../
 
 ###
-# Copy necessary accessory files to the environment
+# Copy necessary accessory files to the environment.
 ###
 cp templates/wp-tests-config.php wordpress-develop/wp-tests-config.php
 cp templates/test-runner.php wordpress-develop/test-runner.php
@@ -37,18 +37,18 @@ cp templates/wp-cli.local.yml wordpress-develop/wp-cli.local.yml
 cp templates/composer.json wordpress-develop/composer.json
 
 ###
-# Commit the necessary files to the environment
+# Commit the necessary files to the environment.
 ###
 cd wordpress-develop
 composer install
 git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
-git config --global user.email "wordpress-develop@getpantheon.com"
-git config --global user.name "Pantheon"
+git config user.email "wordpress-develop@getpantheon.com"
+git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
 git push pantheonsite master:$PANTHEON_BRANCH
 cd ../
 
 ###
-# Switch environment to SFTP mode for running tests
+# Switch environment to SFTP mode for running tests.
 ###
 terminus site set-connection-mode --site=$PANTHEON_SITE --env=$PANTHEON_BRANCH --mode=sftp
