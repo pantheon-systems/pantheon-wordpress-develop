@@ -1,12 +1,5 @@
 #!/bin/bash
 
-###
-# Authenticate with Terminus to perform site management operations.
-#
-# The $TERMINUS_TOKEN environment variable must be set with a valid machine token.
-###
-terminus auth login --machine-token=$TERMINUS_TOKEN
-
 set -ex
 
 ###
