@@ -39,13 +39,19 @@ Need to improve this test runner in some way? You can clone the repository local
 
 **BY FORCE PUSHING AGAINST `PANTHEON_BRANCH` AND ERASING THE DATABASE, THIS TEST RUNNER IRREVOCABLY DAMAGES YOUR PANTHEON SITE. USE ONLY WITH A SINGLE-USE, "THROWAWAY" SITE. DO NOT USE WITH ANY PANTHEON SITE THAT CANNOT BE DELETED.** 
 
-With the warning out of the way and Terminus already installed on your machine, here's how you can use the test runner locally:
+With the warning out of the way, here's how you can use the test runner locally.
+
+First, make sure Terminus is installed and authenticated:
+
+    composer global require pantheon-systems/terminus
+    terminus auth login --machine-token=<secret-token>
+
+Then, you can clone and use the test runner:
 
     git clone git@github.com:pantheon-systems/pantheon-wordpress-develop.git
     cd pantheon-wordpress-develop
     export PANTHEON_SITE=<disposable-site>
     export PANTHEON_BRANCH=<disposable-branch>
-    export TERMINUS_TOKEN=<secret-token>
     ./prepare.sh
     ./test.sh
     ./cleanup.sh
