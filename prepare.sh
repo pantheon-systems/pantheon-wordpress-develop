@@ -2,15 +2,20 @@
 
 set -ex
 
+if [ -z "$TERMINUS_SITE" ] || [ -z "$TERMINUS_ENV" ]; then
+	echo "TERMINUS_SITE and TERMINUS_ENV environment variables must be set"
+	exit 1
+fi
+
 ###
 # Create a new environment for this particular test run.
 ###
-terminus site create-env --to-env=$PANTHEON_BRANCH --from-env=dev --site=$PANTHEON_SITE
+terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
 
 ###
 # Get all necessary environment details.
 ###
-PANTHEON_GIT_URL=$(terminus site connection-info --field=git_url --site=$PANTHEON_SITE --env=$PANTHEON_BRANCH)
+PANTHEON_GIT_URL=$(terminus site connection-info --field=git_url)
 
 ###
 # Clone the WordPress develop repo and push it to the new environment.
@@ -18,7 +23,7 @@ PANTHEON_GIT_URL=$(terminus site connection-info --field=git_url --site=$PANTHEO
 git clone git://develop.git.wordpress.org/ wordpress-develop
 cd wordpress-develop
 git remote add pantheonsite $PANTHEON_GIT_URL
-git push -f pantheonsite master:$PANTHEON_BRANCH
+git push -f pantheonsite master:$TERMINUS_ENV
 cd ../
 
 ###
@@ -38,10 +43,10 @@ git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
-git push pantheonsite master:$PANTHEON_BRANCH
+git push pantheonsite master:$TERMINUS_ENV
 cd ../
 
 ###
 # Switch environment to SFTP mode for running tests.
 ###
-terminus site set-connection-mode --site=$PANTHEON_SITE --env=$PANTHEON_BRANCH --mode=sftp
+terminus site set-connection-mode --mode=sftp
