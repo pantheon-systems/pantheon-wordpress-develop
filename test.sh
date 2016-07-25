@@ -2,6 +2,11 @@
 
 set -ex
 
+if [ -z "$TERMINUS_SITE" ] || [ -z "$TERMINUS_ENV" ]; then
+	echo "TERMINUS_SITE and TERMINUS_ENV environment variables must be set"
+	exit 1
+fi
+
 ###
 # Get all necessary environment details.
 ###
