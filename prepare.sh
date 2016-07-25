@@ -42,8 +42,9 @@ cp $BASH_DIR/templates/composer.json $PREPARE_DIR/composer.json
 # Commit the necessary files to the environment.
 ###
 cd $PREPARE_DIR
+git log -1 --pretty=%B > latest-changeset.txt
 composer install
-git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
