@@ -17,3 +17,10 @@ PANTHEON_SSH_HOST=$(terminus site connection-info --field=sftp_host)
 # Run the tests
 ###
 ssh -p 2222 -o StrictHostKeyChecking=no $PANTHEON_SSH_USER@$PANTHEON_SSH_HOST wp phpunit
+
+###
+# Report the results to Slack
+###
+if [ ! -z "$SLACK_WEBHOOK" ] && [ ! -z "$SLACK_CHANNEL" ]; then
+	ssh -p 2222 -o StrictHostKeyChecking=no $PANTHEON_SSH_USER@$PANTHEON_SSH_HOST wp phpunit-report $SLACK_WEBHOOK $SLACK_CHANNEL $CIRCLE_BUILD_URL
+fi
