@@ -52,7 +52,7 @@ WP_CLI::add_command( 'phpunit-report', function( $args ){
 
 	$rev_number = '(unknown changeset)';
 	if ( preg_match( '#git-svn-id.+trunk@([\d]+)#', $changeset_contents, $matches ) ) {
-		$rev_number = "(<https://core.trac.wordpress.org/changeset/{$matches[1]}|changeset r{$matches[1]}>)";
+		$rev_number = "(<https://core.trac.wordpress.org/changeset/{$matches[1]}|r{$matches[1]}>)";
 	}
 
 	if ( $failure_count ) {
@@ -66,11 +66,11 @@ WP_CLI::add_command( 'phpunit-report', function( $args ){
 	}
 
 	if ( $build_url ) {
-		$verb .= " (<{$build_url}|build>)";
+		$build_url = " (<{$build_url}|build>)";
 	}
 
 	$message = <<<EOT
-{$label}: WordPress trunk {$rev_number} {$verb} on Pantheon in {$total_time} ({$test_count} tests, {$assertion_count} assertions, {$failure_count} failures).
+{$label}: WordPress trunk {$rev_number} {$verb} on Pantheon{$build_url} in {$total_time} ({$test_count} tests, {$assertion_count} assertions, {$failure_count} failures).
 EOT;
 
 	$data = array(
