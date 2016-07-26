@@ -11,40 +11,45 @@ fi
 # Create a new environment for this particular test run.
 ###
 terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
+yes | terminus site wipe
 
 ###
 # Get all necessary environment details.
 ###
 PANTHEON_GIT_URL=$(terminus site connection-info --field=git_url)
+PREPARE_DIR="/tmp/$TERMINUS_ENV-$TERMINUS_SITE"
+BASH_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ###
 # Clone the WordPress develop repo and push it to the new environment.
 ###
-git clone git://develop.git.wordpress.org/ wordpress-develop
-cd wordpress-develop
+rm -rf $PREPARE_DIR
+git clone git://develop.git.wordpress.org/ $PREPARE_DIR
+cd $PREPARE_DIR
 git remote add pantheonsite $PANTHEON_GIT_URL
 git push -f pantheonsite master:$TERMINUS_ENV
-cd ../
+cd $BASH_DIR
 
 ###
 # Copy necessary accessory files to the environment.
 ###
-cp templates/wp-tests-config.php wordpress-develop/wp-tests-config.php
-cp templates/test-runner.php wordpress-develop/test-runner.php
-cp templates/wp-cli.local.yml wordpress-develop/wp-cli.local.yml
-cp templates/composer.json wordpress-develop/composer.json
+cp $BASH_DIR/templates/wp-tests-config.php $PREPARE_DIR/wp-tests-config.php
+cp $BASH_DIR/templates/test-runner.php $PREPARE_DIR/test-runner.php
+cp $BASH_DIR/templates/wp-cli.local.yml $PREPARE_DIR/wp-cli.local.yml
+cp $BASH_DIR/templates/composer.json $PREPARE_DIR/composer.json
 
 ###
 # Commit the necessary files to the environment.
 ###
-cd wordpress-develop
+cd $PREPARE_DIR
+git log -1 --pretty=%B > latest-changeset.txt
 composer install
-git add -f test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
 git push pantheonsite master:$TERMINUS_ENV
-cd ../
+cd $BASH_DIR
 
 ###
 # Switch environment to SFTP mode for running tests.

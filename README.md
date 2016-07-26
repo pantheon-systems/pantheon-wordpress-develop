@@ -23,7 +23,7 @@ On a high level, here's how it works:
     * Committing the configuration files in [`templates/`](https://github.com/pantheon-systems/pantheon-wordpress-develop/tree/master/templates).
     * Committing a copy of PHPUnit
     * Now that the git operations have completed, changing the environment to SFTP mode.
- 2. [`test.sh`](https://github.com/pantheon-systems/pantheon-wordpress-develop/blob/master/test.sh) - Runs the PHPUnit test suite through a WP-CLI command proxy.
+ 2. [`test.sh`](https://github.com/pantheon-systems/pantheon-wordpress-develop/blob/master/test.sh) - Runs the PHPUnit test suite through a WP-CLI command proxy, and reports the results to Slack.
  3. [`cleanup.sh`](https://github.com/pantheon-systems/pantheon-wordpress-develop/blob/master/cleanup.sh) - Cleans up after the test suite has completed. Cleanup includes:
     * Deleting the site environment using Terminus.
 
