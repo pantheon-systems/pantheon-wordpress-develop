@@ -12,6 +12,7 @@ fi
 ###
 terminus site create-env --to-env=$TERMINUS_ENV --from-env=dev
 yes | terminus site wipe
+terminus site set-php-version --version=5.6
 
 ###
 # Get all necessary environment details.
