@@ -11,7 +11,7 @@ dependencies:
   cache_directories:
     - ~/.composer/cache
   override:
-    - composer global require pantheon-systems/terminus
+    - composer global require pantheon-systems/terminus "<0.13.0"
     - terminus auth login --machine-token=$TERMINUS_TOKEN
 
 test:
