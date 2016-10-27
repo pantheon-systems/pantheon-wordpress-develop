@@ -20,7 +20,7 @@ ini_set('apm.event_enabled', '0');
 ini_set('apm.http_enabled', '0');
 ini_set('apm.stacktrace_enabled', '0');
 ini_set('apm.slow_request_enabled', '0');
-
+ 
 // ** MySQL settings ** //
 
 // This configuration file will be used by the copy of WordPress being tested.
