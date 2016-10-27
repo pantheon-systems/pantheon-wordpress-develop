@@ -47,7 +47,7 @@ composer install
 
 ## Set php version w/pantheon yml
 echo 'api_version: 1
-php_version: 56' > pantheon.yml
+php_version: 5.6' > pantheon.yml
 git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor pantheon.yml
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
