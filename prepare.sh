@@ -59,4 +59,5 @@ terminus site set-connection-mode --mode=sftp
 ###
 # Install the WordPress importer to run importer tests
 ###
-terminus wp -- plugin install wordpress-importer --activate
+terminus wp -- plugin install wordpress-importer
+terminus wp -- plugin activate wordpress-importer
