@@ -37,7 +37,10 @@ cp $BASH_DIR/templates/wp-tests-config.php $PREPARE_DIR/wp-tests-config.php
 cp $BASH_DIR/templates/test-runner.php $PREPARE_DIR/test-runner.php
 cp $BASH_DIR/templates/wp-cli.local.yml $PREPARE_DIR/wp-cli.local.yml
 cp $BASH_DIR/templates/composer.json $PREPARE_DIR/composer.json
-svn checkout https://plugins.svn.wordpress.org/wordpress-importer/trunk $PREPARE_DIR/tests/phpunit/data/plugins/wordpress-importer
+wget https://downloads.wordpress.org/plugin/wordpress-importer.zip
+unzip wordpress-importer.zip
+rm wordpress-importer.zip
+mv wordpress-importer $PREPARE_DIR/tests/phpunit/data/plugins/wordpress-importer
 
 ###
 # Commit the necessary files to the environment.
