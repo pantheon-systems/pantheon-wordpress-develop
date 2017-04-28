@@ -37,6 +37,10 @@ cp $BASH_DIR/templates/wp-tests-config.php $PREPARE_DIR/wp-tests-config.php
 cp $BASH_DIR/templates/test-runner.php $PREPARE_DIR/test-runner.php
 cp $BASH_DIR/templates/wp-cli.local.yml $PREPARE_DIR/wp-cli.local.yml
 cp $BASH_DIR/templates/composer.json $PREPARE_DIR/composer.json
+wget https://downloads.wordpress.org/plugin/wordpress-importer.zip
+unzip wordpress-importer.zip
+rm wordpress-importer.zip
+mv wordpress-importer $PREPARE_DIR/tests/phpunit/data/plugins/wordpress-importer
 
 ###
 # Commit the necessary files to the environment.
@@ -44,7 +48,7 @@ cp $BASH_DIR/templates/composer.json $PREPARE_DIR/composer.json
 cd $PREPARE_DIR
 git log -1 --pretty=%B > latest-changeset.txt
 composer install
-git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor tests/phpunit/data/plugins/wordpress-importer
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
