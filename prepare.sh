@@ -48,7 +48,7 @@ mv wordpress-importer $PREPARE_DIR/tests/phpunit/data/plugins/wordpress-importer
 cd $PREPARE_DIR
 git log -1 --pretty=%B > latest-changeset.txt
 composer install
-git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor
+git add -f latest-changeset.txt test-runner.php wp-cli.local.yml wp-tests-config.php vendor tests/phpunit/data/plugins/wordpress-importer
 git config user.email "wordpress-develop@getpantheon.com"
 git config user.name "Pantheon"
 git commit -m "Include requisite test runner dependencies"
