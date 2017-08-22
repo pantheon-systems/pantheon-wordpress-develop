@@ -2,7 +2,7 @@
 
 Runs the [WordPress PHPUnit test suite](https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/) on [Pantheon](https://pantheon.io/) infrastructure to ensure Pantheon is fully compatible with WordPress.
 
-[![CircleCI](https://circleci.com/gh/pantheon-systems/pantheon-wordpress-develop.svg?style=svg)](https://circleci.com/gh/pantheon-systems/pantheon-wordpress-develop)
+**This repo is deprecated in favor of [pantheon-systems/wordpress-unit-tests](https://github.com/pantheon-systems/wordpress-unit-tests)**
 
 ## How It Works
 
