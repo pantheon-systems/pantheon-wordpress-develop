@@ -1,5 +1,7 @@
 # pantheon-wordpress-develop
 
+[![Deprecated](https://img.shields.io/badge/Pantheon-Deprecated-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#deprecated)
+
 Runs the [WordPress PHPUnit test suite](https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/) on [Pantheon](https://pantheon.io/) infrastructure to ensure Pantheon is fully compatible with WordPress.
 
 **This repo is deprecated in favor of [pantheon-systems/wordpress-unit-tests](https://github.com/pantheon-systems/wordpress-unit-tests)**
