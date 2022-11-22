@@ -5,7 +5,7 @@ machine:
   environment:
     # DB config. Using default CircleCI's database.
     TERMINUS_ENV: ci-$CIRCLE_BUILD_NUM
-    TERMINUS_SITE: wordpress-develop
+    TERMINUS_SITE: ci-wordpress-develop
 
 dependencies:
   cache_directories:
